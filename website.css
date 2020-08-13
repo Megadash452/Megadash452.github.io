@@ -12,6 +12,9 @@ h1 {
 	border-width: 2px;
 	border-color: #4d4d4d;
 }
+.website-icon {
+	height: 10px;
+}
 #main {
 	width: 80%;
 	margin-left: 0px;
