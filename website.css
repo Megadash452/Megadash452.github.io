@@ -45,7 +45,6 @@ h1 {
 	margin-top: 50px;
 	top: 0;
 	left: 0;
-	overflow-x: hidden;
 }
 .sidebar-frame {
 	width: 19%;
@@ -53,6 +52,7 @@ h1 {
 	position: fixed;
 	margin-left: 81%;
 	margin-top: 129.88px;
+	padding-top: 50px;
 	top: 0;
 	left: 0;
 	overflow-x: hidden;
