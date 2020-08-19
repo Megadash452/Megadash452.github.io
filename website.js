@@ -1,1 +1,3 @@
-document.getElementById('sample').innerHTML = 'something'
+function f() {
+	document.getElementById('sample').innerHTML = 'something'
+}
