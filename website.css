@@ -20,6 +20,20 @@ body {
 	margin-right: 7.5px;
 	margin-left: 7.5px;
 }
+#sign-in, #sign-up {
+	float: right;
+	margin: 9px;
+	border: #4d4d4d solid 2px;
+	border-radius: 5px;
+	padding: 5px;
+}
+#sign-in {
+	background-color: aquamarine;
+}
+#sign-up {
+	background-color: aqua;
+}
+
 #main {
 	width: 80%;
 	height: 94.4%;
@@ -37,6 +51,7 @@ body {
 	margin-top: 54px;
 	top: 0;
 	left: 0;
+	border-left: 1px solid;
 }
 .sidebar-frame {
 	width: 19%;
