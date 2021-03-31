@@ -1,0 +1,12 @@
+@font-face {
+	src: url("jetbrains-mono/JetBrainsMono-Regular.woff2") format('woff2');
+	font-family: JetBrains-Mono;
+}
+@font-face {
+	src: url("Ubuntu/Ubuntu-Regular.ttf") format('truetype');
+	font-family: Ubuntu;
+}
+@font-face {
+	src: url("Lucida Console.ttf") format('truetype');
+	font-family: "Lucida Console";
+}
