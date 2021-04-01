@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<title>TKH Pre-work website</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="shortcut icon" href="res/icons/index-favicon.png">
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -21,13 +19,26 @@
 			<h1>Page Name</h1>
 		</header>
 
-		<nav id="nav-bar">
-			<a href="#">top</a>
-			<a href="#">bottom</a>
-			<a href="#">left</a>
-			<a href="#">right</a>
-		</nav>
-		<p style="margin-left: 50%;">h</p>
+		
+		<!-- MAIN CONTENT  -  Put everything here -->
+		<div id="main-content">
+			<nav id="nav-bar">
+				<a href="#">top</a>
+				<a href="#">bottom</a>
+				<a href="#">left</a>
+				<a href="#">right</a>
+			</nav>
+			<iframe src="index.html" frameborder="0"></iframe>
+		</div>
 
+
+		<!-- SIDE BAR  -  Must Load Last -->
+		<div id="side-bar">
+			<div id="side-bar-top">
+				h3
+			</div>
+		</div>
+	<script src="jQuery 3.6.0.js"></script>
+	<script src="script.js"></script>
 	</body>
 </html>

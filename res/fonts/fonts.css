@@ -10,3 +10,7 @@
 	src: url("Lucida Console.ttf") format('truetype');
 	font-family: "Lucida Console";
 }
+@font-face {
+	src: url("Roboto Slab/RobotoSlab-Regular.ttf");
+	font-family: "Roboto Slab";
+}
