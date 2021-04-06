@@ -17,3 +17,8 @@ $("#top-bar > .menu-btn").click(function() {
         sideBarShow = false;
     }
 });
+
+// enable/disable a button
+$('#button').click(() =>
+    $buttons.prop('disabled', false);
+);
