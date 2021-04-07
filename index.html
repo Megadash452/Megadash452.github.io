@@ -1,163 +1,52 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>TKH Pre-work website</title>
+		<title>Page Name</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<link rel="shortcut icon" href="res/icons/index-favicon.png">
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<style>
-			@import "res/fonts/fonts.css";
-			body{margin:0;}
-			h1 {
-				font-family: Ubuntu;
-			}
-			p {
-				font: 16px "Roboto Slab";
-			}
-
-			.grid {	
-				background: url(https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg) repeat-y;
-				background-size: cover;
-				background-origin: padding-box;
-				background-clip: padding-box;
-
-				height: 91.75vh;
-			}
-			.row {
-				display: flex;
-				justify-content: space-evenly;
-				
-
-				height: 32.23%;
-			}
-			.box {
-				background: rgb(131, 224, 220);
-				margin: 10px;
-				border-radius: 7px;
-
-				width: 33%;
-				overflow-y: scroll;
-				overflow-x: hidden;
-			}
-			.box h1, p {
-				text-align: center;
-				margin-top: 5px;
-			}
-			.box p {
-				padding-right: 5px;
-				padding-left: 5px;
-			}
-			.box img {
-				display: block;
-				margin-left: auto;
-  				margin-right: auto;
-				width: 175px;
-			}
-
-			#tkh {
-				width: 67%;
-			}
-
-			.languages, .social {
-				display: flex;
-				justify-content: space-evenly;
-			}
-			.languages img, .social img {
-				width: 50px;
-			}
-
-			::-webkit-scrollbar {
-				width: 5px;
-				margin-right: 2px;
-			}
-			::-webkit-scrollbar-thumb {
-				background-color: grey;
-				border-radius: 50px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
-		<h1 style="text-align: center">About me - TKH Prework</h1>
-		<div class="grid">
-			<div class="row">
-				<div class="box">
-					<h1>Rubik's Cube</h1>
-					<img src="res/img/tkh prework/rubiks cube.png" alt="Rubik's Cube">
-					<p>I can solve the <a href="https://en.wikipedia.org/wiki/Rubik%27s_Cube" title="Rubik's Cube">3x3x3</a> Rubik's cube in under a minute.
-					   My fastest time I ever got was around 30 seconds (I can't remember), but I haven't been practicing so I am a little rusty.
-					   I've also done the <a href="https://en.wikipedia.org/wiki/Rubik%27s_Revenge" title="Rubik's Revenge">4x4x4</a>, the <a href="https://en.wikipedia.org/wiki/Professor%27s_Cube" title="Professor's Cube">5x5x5</a> cubes and the Megaminx, but I forgot how to do those since it has really been a while.
-					</p>
+		<header id="top-bar">
+			<button class="menu-btn">
+				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+					<path d="M0 0h24v24H0V0z" fill="none"/>
+					<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+				</svg>
+			</button>
+			
+			<h1><a href="#" target="site" title="Home">Page Name</a></h1>
+		</header>
+
+		
+		<!-- MAIN CONTENT  -  Put everything here -->
+		<div id="main-content">
+			<nav id="nav-bar">
+				<button disabled>&#60</button>
+                <div class="nav-content">
+					<a href="#">top</a>
+					<a href="#">bottom</a>
+					<a href="#">left</a>
+					<a href="#">right</a>
 				</div>
-
-				<div class="box">
-					<h1>Biking</h1>
-					<img src="res/img/tkh prework/bike.jpg" alt="Bike">
-					<p>I enjoy riding my bike with my parents through biking trails in the city and outside fo the city.</p>
-				</div>
-
-				<div class="box">
-					<h1>Video Games</h1>
-					<img src="res/img/tkh prework/ssbu.jpg" alt="Super Smash Bors. Ultimate">
-					<p>One of my favorite hobbies is to play video games either by myself or with friends. One of the games I like playing with my friends is Super Smash Bros Ultimate.</p>
-				</div>
-			</div>
+				<button disabled>&#62</button>
+			</nav>
+            <iframe style="border: none;" src="index.html"></iframe>
+		</div>
 
 
-			<div class="row">
-				<div class="box">
-					<h1>Programming Languages</h1>
-					<div class="languages">
-						<img src="res/img/tkh prework/python.png" alt="Python">
-						<img src="res/img/tkh prework/html.png" alt="HTML">
-						<img src="res/img/tkh prework/css.png" alt="CSS">
-						<img src="res/img/tkh prework/c++.png" alt="C++">
-					</div>
-					<p>I can code in many different programming languages.
-						Some of these include Python, HTML and CSS, and C++.
-						I am a beginner at C++, but when it comes to Python and HTML/CSS I am at the intermediate level.
-					</p>
-				</div>
-
-				<div class="box" id="center">
-					<h1>About me</h1>
-					<p>My name is Martin Molina and I am a senior at DeWitt Clinton High School. I graduate in June 2021.
-						<br><br>
-						This page is about me. It includes some of my hobbies and skills. It also has some links to my social media.
-					</p>
-				</div>
-
-				<div class="box">
-					<h1>Social Media</h1>
-					<div class="social">
-						<img src="res/img/tkh prework/discord.jpg" alt="Discord">
-						<img src="res/img/tkh prework/gmail-old.png" alt="Gmail">
-						<img src="res/img/tkh prework/reddit.png" alt="Reddit">
-					</div>
-					<p>I am not very into social media, I just use it to talk to friends and such.
-						The social media I currently have is
-						<span title="user: Megadash452#0816">Discord (Megadash452#0816)</span>
-						and
-						<a title="u/Megadash452" href="https://www.reddit.com/user/Megadash452">Reddit</a>.
-						My email is <a href="mailto:marticraft680@gmail.com" title="marticraft680@gmail.com">email</a>.
-					</p>
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="box">
-					<h1>In the Future</h1>
-					<img src="https://victoria.mediaplanet.com/app/uploads/sites/102/2019/07/mainimage-26.jpg" alt="code">
-					<p>In the future I hope to be a Software engineer with a steady income.</p>
-				</div>
-
-				<div class="box" id="tkh">
-					<h1>Why TKH?</h1>
-					<p>I want to become a TKH fellow because being in this fellowship would help me tremendously in the future. Not only will I be surrounded with like-minded fellows who will help me be a better person and programmer, I will also be provided with various opportunities such as internships.</p>
-				</div>
+		<!-- SIDE BAR  -  Must Load Last -->
+		<div id="side-bar">
+			<div id="side-bar-top">
+				<h1>La Creatura</h1>
+                <hr>
+                <p>hhhh</p>
 			</div>
 		</div>
+	<script src="jQuery 3.6.0.js"></script>
+	<script src="script.js"></script>
 	</body>
 </html>
