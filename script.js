@@ -1,7 +1,27 @@
 $(document).ready(function() {
     console.log("Page is ready");
     console.log($(document).clientHeight - $("#top-bar")[0].clientHeight + $("#nav-bar")[0].clientHeight);
-    console.log($(document))
+    console.log($(document));
+    
+    // set iframe page height
+    pageHeight =
+        $("body")[0].clientHeight - (
+            $("#top-bar")[0].clientHeight +
+            $("#nav-bar")[0].clientHeight
+        ) - 4 - 5;
+    $("#main-content > iframe").height(pageHeight);
+
+    // set position of right nav-bar button and width of content
+    $("#nav-bar > button")[1].style.left = `${$("#nav-bar")[0].clientWidth - 29}px`;
+    $("#nav-bar .nav-content")[0].style.width = `${$("#nav-bar")[0].clientWidth - 29*2}px`;
+
+    // check if navbar content can scroll to assign flex box
+    if (isScrollable($("#nav-bar .nav-content")[0])) {
+        $("#nav-bar .nav-content")[0].style.display = "block";
+    } else {
+        $("#nav-bar .nav-content")[0].style.display = "flex";
+        $("#nav-bar .nav-content")[0].style.justifyContent = "space-evenly";
+    }
 })
 
 var sideBarShow = false;
@@ -18,7 +38,31 @@ $("#top-bar > .menu-btn").click(function() {
     }
 });
 
+$(window).resize(function() {
+    // set iframe page height
+    pageHeight =
+        $("body")[0].clientHeight - (
+            $("#top-bar")[0].clientHeight +
+            $("#nav-bar")[0].clientHeight
+        ) - 4;
+    $("#main-content > iframe").height(pageHeight);
+
+    // set position of right nav-bar button and width of content
+    $("#nav-bar > button")[1].style.left = `${$("#nav-bar")[0].clientWidth - 29}px`;
+    $("#nav-bar .nav-content")[0].style.width = `${$("#nav-bar")[0].clientWidth - 29*2}px`;
+
+    // check if navbar content can scroll to assign flex box
+    if (isScrollable($("#nav-bar .nav-content")[0])) {
+        $("#nav-bar .nav-content")[0].style.display = "block";
+    } else {
+        $("#nav-bar .nav-content")[0].style.display = "flex";
+        $("#nav-bar .nav-content")[0].style.justifyContent = "space-evenly";
+    }
+});
+
 // enable/disable a button
-$('#button').click(() =>
-    $buttons.prop('disabled', false);
-);
+    //$buttons.prop('disabled', false);
+
+function isScrollable(element) {
+    return element.scrollWidth > element.clientWidth;
+}
