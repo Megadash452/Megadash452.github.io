@@ -41,6 +41,8 @@ body {
     width: 35px;
     height: 35px;
 
+    outline: none;
+
     border-radius: 5px;
     background: transparent/*var(--cyan)*/;
 }
@@ -52,6 +54,7 @@ body {
 #top-bar h1 {
     display: inline-block;
     margin: 22px;
+    margin-left: 0;
 
     color: var(--dark-grey);
     font-family: Ubuntu;
@@ -201,4 +204,10 @@ nav a:hover, #nav-bar a:hover {
 @keyframes main-fadeLight {
 	from {filter: brightness(15%)}
 	to   {filter: brightness(100%)}
+}
+
+@keyframes topbar-btn-click {
+    from {background-color: #25252500;}
+    50% {background-color: #252525cc;}
+    to {background-color: #25252500;}
 }
