@@ -52,7 +52,6 @@ body {
 #top-bar h1 {
     display: inline-block;
     margin: 22px;
-    margin-left: 0;
 
     color: var(--dark-grey);
     font-family: Ubuntu;
@@ -103,10 +102,11 @@ nav, #nav-bar {
     margin: 3px;
     border: 2px solid var(--lite-grey);
     border-radius: 100%;
+    padding: 0;
 
     position: absolute;
+    /* position done by js */
 
-    color: var(--lite-grey);
     background: transparent;
     outline: none;
 
@@ -118,6 +118,13 @@ nav, #nav-bar {
 }
 #nav-bar > button:disabled {
     filter: brightness(60%);
+}
+#nav-bar > button > img {
+    position: absolute;
+    top: -2px;
+    bottom: 2px;
+    left: -2px;
+    right: 2px;
 }
 
 nav a, #nav-bar a {

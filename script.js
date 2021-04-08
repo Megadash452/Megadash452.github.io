@@ -20,17 +20,7 @@ $(document).ready(function() {
         $("#nav-bar .nav-content")[0].style.display = "block";
 
         // change availability of nav btns
-        if (!navScroll[0].scrollLeft) {
-            $("#nav-bar > button").eq(0).prop("disabled", true);
-        } else {
-            $("#nav-bar > button").eq(0).prop("disabled", false);
-        }
-        if (navScroll[0].scrollLeft !==
-            navScroll[0].scrollWidth - navScroll[0].clientWidth) {
-            $("#nav-bar > button").eq(1).prop("disabled", false);
-        } else {
-            $("#nav-bar > button").eq(1).prop("disabled", true);
-        }
+        checkNavScroll(navScroll[0]);
     } else {
         $("#nav-bar .nav-content")[0].style.display = "flex";
         $("#nav-bar .nav-content")[0].style.justifyContent = "space-evenly";
@@ -72,17 +62,7 @@ $(window).resize(function() {
         navScroll.css("display", "block");
 
         // change availability of nav btns
-        if (!navScroll[0].scrollLeft) {
-            $("#nav-bar > button").eq(0).prop("disabled", true);
-        } else {
-            $("#nav-bar > button").eq(0).prop("disabled", false);
-        }
-        if (navScroll[0].scrollLeft !==
-            navScroll[0].scrollWidth - navScroll[0].clientWidth) {
-            $("#nav-bar > button").eq(1).prop("disabled", false);
-        } else {
-            $("#nav-bar > button").eq(1).prop("disabled", true);
-        }
+        checkNavScroll(navScroll[0]);
     } else {
         $("#nav-bar .nav-content").css("display", "flex");
         $("#nav-bar .nav-content").css("justify-content", "space-evenly");
@@ -90,19 +70,11 @@ $(window).resize(function() {
         // change availability of nav btns
         $("#nav-bar > button").prop("disabled", true);
     }
+    //console.log($("#nav-bar .nav-content")[0].scrollLeft);
 });
 
 $("#nav-bar .nav-content").scroll(function() {
-    if (this.scrollLeft) {
-        $("#nav-bar > button").eq(0).prop("disabled", false);
-    } else {
-        $("#nav-bar > button").eq(0).prop("disabled", true);
-    }
-    if (this.scrollLeft !== this.scrollWidth - this.clientWidth) {
-        $("#nav-bar > button").eq(1).prop("disabled", false);
-    } else {
-        $("#nav-bar > button").eq(1).prop("disabled", true);
-    }
+    checkNavScroll(this);
 });
 
 $("#nav-bar > button").eq(0).click(function() { // left scroll button
@@ -127,4 +99,21 @@ function getAvgNavItemWidth() {
         total += itemArr[i].clientWidth + 10;
     }
     return total/itemArr.length;
+}
+
+function checkNavScroll(navScroller) {
+    if (navScroller.scrollLeft) {
+        $("#nav-bar > button").eq(0).prop("disabled", false);
+    } else {
+        $("#nav-bar > button").eq(0).prop("disabled", true);
+    }
+    if (!(round(navScroller.scrollLeft) >= navScroller.scrollWidth - navScroller.clientWidth)) {
+        $("#nav-bar > button").eq(1).prop("disabled", false);
+    } else {
+        $("#nav-bar > button").eq(1).prop("disabled", true);
+    }
+}
+
+function round(decimal) {
+    return Math.floor(decimal + 0.5);
 }
