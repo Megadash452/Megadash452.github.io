@@ -1,8 +1,7 @@
+var scrollAmount = 0;
+
 $(document).ready(function() {
-    console.log("Page is ready");
-    console.log($(document).clientHeight - $("#top-bar")[0].clientHeight + $("#nav-bar")[0].clientHeight);
-    console.log($(document));
-    
+    console.log("theme.js");
     // set iframe page height
     pageHeight =
         $("body")[0].clientHeight - (
@@ -16,13 +15,29 @@ $(document).ready(function() {
     $("#nav-bar .nav-content")[0].style.width = `${$("#nav-bar")[0].clientWidth - 29*2}px`;
 
     // check if navbar content can scroll to assign flex box
+    let navScroll = $("#nav-bar .nav-content");
     if (isScrollable($("#nav-bar .nav-content")[0])) {
         $("#nav-bar .nav-content")[0].style.display = "block";
+
+        // change availability of nav btns
+        if (!navScroll[0].scrollLeft) {
+            $("#nav-bar > button").eq(0).prop("disabled", true);
+        } else {
+            $("#nav-bar > button").eq(0).prop("disabled", false);
+        }
+        if (navScroll[0].scrollLeft !==
+            navScroll[0].scrollWidth - navScroll[0].clientWidth) {
+            $("#nav-bar > button").eq(1).prop("disabled", false);
+        } else {
+            $("#nav-bar > button").eq(1).prop("disabled", true);
+        }
     } else {
         $("#nav-bar .nav-content")[0].style.display = "flex";
         $("#nav-bar .nav-content")[0].style.justifyContent = "space-evenly";
     }
-})
+
+    scrollAmount = getAvgNavItemWidth();
+});
 
 var sideBarShow = false;
 
@@ -52,12 +67,50 @@ $(window).resize(function() {
     $("#nav-bar .nav-content")[0].style.width = `${$("#nav-bar")[0].clientWidth - 29*2}px`;
 
     // check if navbar content can scroll to assign flex box
-    if (isScrollable($("#nav-bar .nav-content")[0])) {
-        $("#nav-bar .nav-content")[0].style.display = "block";
+    let navScroll = $("#nav-bar .nav-content");
+    if (isScrollable(navScroll[0])) {
+        navScroll.css("display", "block");
+
+        // change availability of nav btns
+        if (!navScroll[0].scrollLeft) {
+            $("#nav-bar > button").eq(0).prop("disabled", true);
+        } else {
+            $("#nav-bar > button").eq(0).prop("disabled", false);
+        }
+        if (navScroll[0].scrollLeft !==
+            navScroll[0].scrollWidth - navScroll[0].clientWidth) {
+            $("#nav-bar > button").eq(1).prop("disabled", false);
+        } else {
+            $("#nav-bar > button").eq(1).prop("disabled", true);
+        }
     } else {
-        $("#nav-bar .nav-content")[0].style.display = "flex";
-        $("#nav-bar .nav-content")[0].style.justifyContent = "space-evenly";
+        $("#nav-bar .nav-content").css("display", "flex");
+        $("#nav-bar .nav-content").css("justify-content", "space-evenly");
+
+        // change availability of nav btns
+        $("#nav-bar > button").prop("disabled", true);
     }
+});
+
+$("#nav-bar .nav-content").scroll(function() {
+    if (this.scrollLeft) {
+        $("#nav-bar > button").eq(0).prop("disabled", false);
+    } else {
+        $("#nav-bar > button").eq(0).prop("disabled", true);
+    }
+    if (this.scrollLeft !== this.scrollWidth - this.clientWidth) {
+        $("#nav-bar > button").eq(1).prop("disabled", false);
+    } else {
+        $("#nav-bar > button").eq(1).prop("disabled", true);
+    }
+});
+
+$("#nav-bar > button").eq(0).click(function() { // left scroll button
+    $("#nav-bar .nav-content")[0].scrollLeft -= scrollAmount;
+});
+
+$("#nav-bar > button").eq(1).click(function() { // right scroll button
+    $("#nav-bar .nav-content")[0].scrollLeft += scrollAmount;
 });
 
 // enable/disable a button
@@ -65,4 +118,13 @@ $(window).resize(function() {
 
 function isScrollable(element) {
     return element.scrollWidth > element.clientWidth;
+}
+
+function getAvgNavItemWidth() {
+    let itemArr = $("#nav-bar > .nav-content > a");
+    let total = 0;
+    for(i=0; i < itemArr.length; i++) {
+        total += itemArr[i].clientWidth + 10;
+    }
+    return total/itemArr.length;
 }
