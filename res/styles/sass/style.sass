@@ -12,8 +12,9 @@ $grey: #3f3f3f
 $dark-grey: #212121
 
 $sidebar-width: 422px
-$topbar-height: 99.2px
-$topdropper-height: 18.4px
+$topcontainer-height: 80.8px
+$topdropper-height: 24px //18.4px
+$topbar-height: $topcontainer-height + $topdropper-height
 
 =abs-pos($top, $left, $bottom:0, $right:0)
     position: absolute
@@ -59,7 +60,7 @@ body
 
     .top-container
         +abs-pos(0, 0)
-        height: $topbar-height - 18.4px
+        height: $topcontainer-height
     
     .menu-btn
         margin: 22px
@@ -71,6 +72,7 @@ body
         height: 35px
 
         outline: none
+        user-select: none
         background: transparent //$cyan
 
         > svg
@@ -98,8 +100,12 @@ body
     .top-dropper
         &:hover
             background: darken($dark-cyan, 3%)
+        &:active
+            background: darken($dark-cyan, 7%)
         +abs-pos($topbar-height - $topdropper-height, 0)
         height: $topdropper-height
+        text-align: center
+        user-select: none
 
 
 nav, #nav-bar
@@ -135,6 +141,7 @@ nav, #nav-bar
         position: absolute
         /* position done by js */
         background: transparent
+        user-select: none
         outline: none
 
         height: 23px

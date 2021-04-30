@@ -1,36 +1,48 @@
-@keyframes top-bar-slideIn
+@keyframes top-bar-slideIn-click
     from
         height: $topdropper-height
     to
         height: $topbar-height
 
-@keyframes top-bar-slideOut
+@keyframes top-bar-slideOut-click
     from
         height: $topbar-height
     to
         height: $topdropper-height
 
 
-@keyframes top-div-slideIn
+@keyframes top-div-slideIn-click
     from
         top: -$topbar-height
     to
         top: 0
 
-@keyframes top-div-slideOut
+@keyframes top-div-slideOut-click
     from
         top: 0
     to
         top: -$topbar-height
 
+// @keyframes top-div-slideIn-drag
+//     from
+//         top: -57px
+//     to
+//         top: 0
 
-@keyframes top-drop-slideIn
+// @keyframes top-div-slideOut-drag
+//     from
+//         top: 0
+//     to
+//         top: -57px
+
+
+@keyframes top-drop-slideIn-click
     from
         top: 0
     to
         top: $topbar-height - $topdropper-height
 
-@keyframes top-drop-slideOut
+@keyframes top-drop-slideOut-click
     from
         top: $topbar-height - $topdropper-height
     to

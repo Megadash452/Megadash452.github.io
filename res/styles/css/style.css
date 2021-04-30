@@ -12,7 +12,7 @@ body {
 
 #top-bar {
   background-color: #0074bd;
-  height: 99.2px;
+  height: 104.8px;
 }
 
 #top-bar .top-container {
@@ -32,6 +32,7 @@ body {
   width: 35px;
   height: 35px;
   outline: none;
+  user-select: none;
   background: transparent;
 }
 
@@ -65,11 +66,17 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 18.4px;
+  height: 24px;
+  text-align: center;
+  user-select: none;
 }
 
 #top-bar .top-dropper:hover {
   background: #006bae;
+}
+
+#top-bar .top-dropper:active {
+  background: #005e99;
 }
 
 nav, #nav-bar {
@@ -102,6 +109,7 @@ nav > button, #nav-bar > button {
   position: absolute;
   /* position done by js */
   background: transparent;
+  user-select: none;
   outline: none;
   height: 23px;
   width: 23px;
@@ -156,7 +164,7 @@ nav a:hover, #nav-bar a:hover {
 #main-filter {
   z-index: 5;
   position: absolute;
-  top: 99.2px;
+  top: 104.8px;
   left: 422px;
   bottom: 0;
   right: 0;
@@ -172,7 +180,7 @@ nav a:hover, #nav-bar a:hover {
 
 #side-bar {
   position: absolute;
-  top: 99.2px;
+  top: 104.8px;
   bottom: 0;
   left: -422px;
   right: 0;
@@ -192,25 +200,25 @@ nav a:hover, #nav-bar a:hover {
 
 @keyframes top-bar-slideIn {
   from {
-    height: 18.4px;
+    height: 24px;
   }
   to {
-    height: 99.2px;
+    height: 104.8px;
   }
 }
 
 @keyframes top-bar-slideOut {
   from {
-    height: 99.2px;
+    height: 104.8px;
   }
   to {
-    height: 18.4px;
+    height: 24px;
   }
 }
 
 @keyframes top-div-slideIn {
   from {
-    top: -99.2px;
+    top: -104.8px;
   }
   to {
     top: 0;
@@ -222,7 +230,7 @@ nav a:hover, #nav-bar a:hover {
     top: 0;
   }
   to {
-    top: -99.2px;
+    top: -104.8px;
   }
 }
 

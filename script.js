@@ -1,5 +1,8 @@
 var scrollAmount = 0;
 
+const topContainerHeight = 80.8
+const topDropperHeight = 24 // 18.4
+
 var navbarLinks = [
     {
         "text": "top",
@@ -67,15 +70,95 @@ $("#top-bar > .top-container > .menu-btn").click(async function() {
         collapseSidebar();
 });
 
-$("#top-bar > .top-dropper").click(async function() {
-    if (!topbarShow)
-        openTopbar();
-    else
-        collapseTopbar();
 
-    if (sidebarShow)
-        collapseSidebar();
+$("#top-bar > .top-dropper").mousedown(function(event) {
+    //let clickPos = [event.clientX, event.clientY];
+    var posBefore = [event.clientX, event.clientY];
+    var posAfter = [0, 0];
+    let mouseLim = 10;
+
+    let totalMoveX = 0;
+    let totalMoveY = 0;
+
+    let element = document.querySelector("#top-bar > .top-dropper");
+
+
+    document.onmousemove = function(event) {
+        totalMoveX += 1;
+        totalMoveY += 1;
+
+        // glitchy
+        // if (event.clientY <= clickPos[1] - mouseLim ||
+        //     event.clientY >= clickPos[1] + mouseLim ||
+        //     event.clientX <= clickPos[0] - mouseLim ||
+        //     event.clientX >= clickPos[0] + mouseLim)
+        //         console.log("dragged");
+        
+        if (totalMoveY >= mouseLim ||
+            totalMoveX >= mouseLim)
+        {
+            // -- ON DRAG
+            console.log("DRAG");
+            posAfter = [
+                posBefore[0] - event.clientX,
+                posBefore[1] - event.clientY
+            ];
+            posBefore = [event.clientX, event.clientY];
+
+            if (parseInt(getComputedStyle(element).top) >= 0 &&
+                parseInt(getComputedStyle(element).top) <= topContainerHeight)
+            {
+                element.style.top = `${
+                    parseInt(getComputedStyle(element).top)
+                  - posAfter[1]
+                }px`;
+                element.parentElement.style.height = `${
+                    parseInt(getComputedStyle(element.parentElement).height)
+                  - posAfter[1]
+                }px`;
+
+                if (parseInt(getComputedStyle(element).top) == 57 && posAfter[1] > 0) {
+                    $("#top-bar > .top-container").css("animation", "top-div-slideOut 0.4s forwards");
+                } else if (parseInt(getComputedStyle(element).top) == 58 && posAfter[1] < 0) {
+                    $("#top-bar > .top-container").css("animation", "top-div-slideIn 0.4s forwards");
+                }
+            } else if (parseInt(getComputedStyle(element).top) < 0) {
+                element.style.top = "0px";
+                element.parentElement.style.height = `${topDropperHeight}px`;
+            } else if (parseInt(getComputedStyle(element).top) > topContainerHeight) {
+                element.style.top = `${topContainerHeight}px`;
+                element.parentElement.style.height = `${topContainerHeight + topDropperHeight}px`;
+            }
+        }
+    }
+    document.onmouseup = function() {
+        // glitchy
+        // if (!(event.clientX >= clickPos[0] + mouseLim) &&
+        //     !(event.clientX <= clickPos[0] - mouseLim) &&
+        //     !(event.clientY >= clickPos[1] + mouseLim) &&
+        //     !(event.clientY <= clickPos[1] - mouseLim))
+        //         console.log("clicked");
+
+        if (totalMoveX <= mouseLim &&
+            totalMoveY <= mouseLim)
+        {
+            // -- ON CLICK
+            console.log("clicked");
+
+            if (!topbarShow)
+                openTopbar();
+            else
+                collapseTopbar();
+
+            if (sidebarShow)
+                collapseSidebar();
+        }   
+        
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
 });
+
 
 $("#main-filter").click(async function() {
     if (sidebarShow)
@@ -194,4 +277,31 @@ function round(decimal) {
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function makeElementDraggable(element, handler, obj) {
+    var posBefore, posAfter = [0, 0];
+
+    element.onmousedown = function(event) {
+        // mouse position when click
+        posBefore = [event.clientX, event.clientY];
+
+        // moving the element
+        document.onmousemove = function(event) {
+            posAfter = [
+                posBefore[0] - event.clientX,
+                posBefore[1] - event.clientY
+            ];
+            posBefore = [event.clientX, event.clientY];
+
+            // execute lambda
+            handler(element, [posAfter[0], posAfter[1]], obj);
+        };
+
+        // release mouse button
+        document.onmouseup = function() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    };
 }
